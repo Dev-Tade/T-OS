@@ -3,7 +3,7 @@
 *To build you will need Linux or WSL with the next packages:*
 >GCC <br />
 >LD <br />
->NASM
+>NASM <br />
 *Once the packages are installed run build.sh*
 
 ## Origins of T-OS
