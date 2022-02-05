@@ -1,0 +1,9 @@
+build:
+
+nasm "boot.asm" -f bin -o "boot.bin"
+nasm "kernel_entry.asm" -f elf -o "kernel_entry.o"
+gcc -ffreestanding -m32 -g -c "kernel.c" -o "kernel.o"
+ld -o "full_kernel.bin" -Ttext 0x1000 "kernel_entry.o" "kernel.o" //Error
+
+run:
+qemu-system-x86_64 boot.bin
