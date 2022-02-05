@@ -5,3 +5,4 @@ ld -m elf_i386 -T Link.ld -o FullKernel.bin Boot.bin Kernel.bin
 rm Kernel.bin
 rm Boot.bin
 mv FullKernel.bin Kernel.bin
+mv Kernel.bin /bin/Kernel.bin
