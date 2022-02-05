@@ -1,5 +1,5 @@
 # T-OS
-**A Open Source Operating System:
+**A Open Source Operating System:**
 *To build you will need Linux or WSL with the next packages:*
 >GCC <br />
 >LD <br />
