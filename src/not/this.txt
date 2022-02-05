@@ -1,6 +1,19 @@
-nasm "boot.asm" -f bin -o "boot.bin"
-nasm "kernel_entry.asm" -f elf -o "kernel_entry.o"
-gcc -ffreestanding -m32 -g -c "kernel.c" -o "kernel.o"
-ld -o "full_kernel.bin" -Ttext 0x1000 "kernel_entry.o" "kernel.o" //Error
+build:
 
+nasm "boot.asm" -f bin -o "boot.bin"
+
+nasm "kernel_entry.asm" -f elf -o "kernel_entry.o"
+
+gcc -ffreestanding -m32 -g -c "kernel.c" -o "kernel.o"
+
+ld -o "full_kernel.bin" -Ttext 0x1000 "kernel_entry.o" "kernel.o" //Error: 
+text 0x1000 "kernel_entry.o" "kernel.o"
+ld: i386 architecture of input file `kernel_entry.o' is incompatible with i386:x86-64 output
+ld: i386 architecture of input file `kernel.o' is incompatible with i386:x86-64 output
+ld: warning: cannot find entry symbol _start; defaulting to 0000000000001000
+ld: kernel.o: in function `main':
+/mnt/c/Users/Usuario/OneDrive/Escritorio/Programacion/cOS/src/kernel.c:2: undefined reference to `_GLOBAL_OFFSET_TABLE_'
+
+
+run:
 qemu-system-x86_64 boot.bin
