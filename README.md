@@ -1,9 +1,9 @@
 # T-OS
 **An Open Source Operating System:** <br />
 *To build you will need Linux or WSL with the next packages:*
->GCC <br />
->LD <br />
->NASM <br /> <
+***GCC** <br />
+***LD*** <br />
+***NASM*** <br />
 *Once the packages are installed run build.sh*
 
 ## Origins of T-OS
