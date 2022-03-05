@@ -25,6 +25,5 @@ unsigned int VGA_Index;
 
 void Println(char* String, char Color);
 void Putchar(char Chr, int Index, char Color);
-void Clear(void);
-
+void Scr_Clear(void);
 #endif

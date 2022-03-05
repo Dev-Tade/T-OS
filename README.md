@@ -5,9 +5,9 @@
 ***QEMU*** <br />
 ***GCC*** <br />
 ***LD*** <br />
-*Once the packages are installed run build.sh* <br />
+*Once the packages are installed run Build.sh* <br />
 **Now run qemu: `qemu-system-i386 -kernel Kernel.bin`**
 
 ## Origins of T-OS
-**T-OS originally was a side project to get a Bootloader in Assembly and a Kernel written in C** <br />
+**T-OS is a side project to get a Bootloader in Assembly and a Kernel written in C** <br />
 **T-OS originally was called c-OS (Custom - OS)**

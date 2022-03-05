@@ -55,12 +55,12 @@ void Putchar(char Chr, int Index, unsigned char Color)
     VGA_Index++;
 }
 
-void Clear(void)
+void Scr_Clear(void)
 {
     int Index = 0;
     while (Index < 80*25*2)
     {
         Terminal_Buffer[Index] = ' ';
-        Index += 2;
+        Index += 1;
     }
 }
