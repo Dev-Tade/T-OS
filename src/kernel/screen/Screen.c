@@ -1,7 +1,7 @@
 #include "Screen.h"
 
-unsigned short* VGA_Memory;
-unsigned int VGA_Index;
+u16int* VGA_Memory;
+u32int VGA_Index;
 
 void __INIT_VGA__()
 {
@@ -13,7 +13,7 @@ void __INIT_VGA__()
     Screen_Clear();
 }
 
-void Screen_Put(char c)
+void Screen_Put(s8int c)
 {
     if (c == '\n') {Move_Cursor(0, YCursor+1);}
     else
@@ -24,7 +24,7 @@ void Screen_Put(char c)
     }
 }
 
-void Screen_Write(char* String)
+void Screen_Write(s8int* String)
 {
     int strx = 0;
     while (String[strx] != '\0')
@@ -41,12 +41,12 @@ void Screen_Clear()
     Move_Cursor(0, 0);
 }
 
-void Screen_Set(int x, int y, char c)
+void Screen_Set(s32int x, s32int y, s8int c)
 {
     VGA_Memory[y * SCREEN_WIDTH + x] = c | (unsigned)GRAY << 8;
 }
 
-void Move_Cursor(int x, int y)
+void Move_Cursor(s32int x, s32int y)
 {
     if (x > 80) {x = 0; y += 1;}
     if (y > 25) {y = 0;}
