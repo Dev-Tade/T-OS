@@ -16,6 +16,7 @@ void __INIT_VGA__()
 void Screen_Put(s8int c)
 {
     if (c == '\n') {Move_Cursor(0, YCursor+1);}
+    else if (c == '\t') {Screen_Put(' ');Screen_Put(' ');}
     else
     {
         VGA_Memory[VGA_Index] = c | (unsigned)GRAY << 8;

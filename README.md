@@ -5,6 +5,7 @@
 ***-QEMU*** <br />
 ***-GCC*** <br />
 ***-LD*** <br />
+***-GRUB*** <br />
 *Once the packages are installed run `Build.sh`* <br />
 **Now run qemu: `qemu-system-i386 -kernel bin/Kernel.bin`**
 
@@ -22,9 +23,6 @@
 |- boot (Contains Bootloader src)
 |- Kernel (All Kernel source)
 |- Link.ld (Linker)
-```
-```
-The 'old-ref' directory contains old versions sources
 ```
 
 ## Origins of T-OS

@@ -33,7 +33,7 @@ u32int XCursor;
 u32int YCursor;
 
 void __INIT_VGA__();
-#define VGA_INIT __INIT_VGA__()
+#define VGA_INIT __INIT_VGA__();
 
 void Screen_Put(s8int c);
 void Screen_Set(s32int x, s32int y, s8int c);
