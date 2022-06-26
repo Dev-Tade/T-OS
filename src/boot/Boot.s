@@ -5,11 +5,11 @@ section .text
         dd 0x00
         dd - (0x1BADB002 + 0x00)
 global start
-extern KernelMain
+extern Kernel
 start:
         cli
         mov esp, stack_space
-        call KernelMain
+        call Kernel
         hlt
 section .bss
 resb 8192

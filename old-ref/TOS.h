@@ -20,11 +20,6 @@
 #define YELLOW 14
 #define WHITE 15
 
-typedef struct S_KEY {
-    int KC;
-    char* ID;
-}KEY_T;
-
 unsigned short* Terminal_Buffer;
 unsigned int VGA_Index;
 
@@ -32,5 +27,4 @@ void Putchar(char Chr, char Color); //DEPRECATED
 void Println(char* String, char Color);
 void Scr_Clear(void);
 
-KEY_T GetKey();
 #endif

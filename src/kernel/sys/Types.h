@@ -10,11 +10,22 @@ typedef          char  s8int;
 
 typedef s8int* string;
 
-typedef enum state_e
-{
-    on = 1,
-    off = 0
-} state_t;
+typedef enum {
+    false = 0,
+    true = 1
+} bool;
 
+#define u32int u32int
+#define s32int s32int
+#define u16int u16int
+#define s16int s16int
+#define u8int  u8int
+#define s8int  s8int
+
+#define string string
+#define bool bool
+
+#define false false
+#define true true
 
 #endif

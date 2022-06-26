@@ -1,54 +1,208 @@
 #include "Keyboard.h"
 
-s8int ReadKey(state_t hide)
+char ReadKey(bool showkey)
 {
-	s8int buff;
-    int reading = 1;
+	char buff;
+    bool reading = true;
     while (reading)
     {
         if (inb(0x64) & 0x1)
         {
-            buff = MapKeycodes(inb(0x60));
-            if (hide == on) {Screen_Put(buff);}
-            reading = 0;
+            buff = __MapKeycodes__(inb(0x60));
+            if (showkey == true) {Screen_Put(buff);}
+            reading = false;
         }
     }
     return buff;
 }
 
-string ReadStr(state_t hide)
+string ReadStr(bool newlineend)
 {
-    string buff;
-    char key;
-    int reading = 1;
+    string buffstr;
     int i = 0;
-    while (reading)
+    bool reading = true;
+    while(reading)
     {
-        if (inb(0x64) & 0x1)
+        if(inb(0x64) & 0x1)                 
         {
-            switch (key = inb(0x60))
-            {
-            case 28:
-                buff[i] = '\0';
-                Screen_Put('\n');
-                reading = 0;
+            switch(inb(0x60))
+            { 
+        case 1:
+                Screen_Put('\0'); buffstr[i] = '\0'; reading = false;
                 break;
-            default:
-                buff[i] = MapKeycodes(key);
-                if (hide == on) {Screen_Put(buff[i]);}
-                i++;
+        case 2:
+                Screen_Put('1'); buffstr[i] = '1'; i++;
+                break;
+        case 3:
+                Screen_Put('2'); buffstr[i] = '2'; i++;
+                break;
+        case 4:
+                Screen_Put('3'); buffstr[i] = '3'; i++;
+                break;
+        case 5:
+                Screen_Put('4'); buffstr[i] = '4'; i++;
+                break;
+        case 6:
+                Screen_Put('5'); buffstr[i] = '5'; i++;
+                break;
+        case 7:
+                Screen_Put('6'); buffstr[i] = '6'; i++;
+                break;
+        case 8:
+                Screen_Put('7'); buffstr[i] = '7'; i++;
+                break;
+        case 9:
+                Screen_Put('8'); buffstr[i] = '8'; i++;
+                break;
+        case 10:
+                Screen_Put('9'); buffstr[i] = '9'; i++;
+                break;
+        case 11:
+                Screen_Put('0'); buffstr[i] = '0'; i++;
+                break;
+        case 12:
+                Screen_Put('-'); buffstr[i] = '-'; i++;
+                break;
+        case 13:
+                Screen_Put('='); buffstr[i] = '='; i++;
+                break;
+        case 14:
+                Screen_Put('\b'); i--; buffstr[i] = ' ';
+                break;
+        case 15:
+                Screen_Put('\t'); buffstr[i] = '\t'; i++;
+                break;
+        case 16:
+                Screen_Put('q'); buffstr[i] = 'q'; i++;
+                break;
+        case 17:
+                Screen_Put('w'); buffstr[i] = 'w'; i++;
+                break;
+        case 18:
+                Screen_Put('e'); buffstr[i] = 'e'; i++;
+                break;
+        case 19:
+                Screen_Put('r'); buffstr[i] = 'r'; i++;
+                break;
+        case 20:
+                Screen_Put('t'); buffstr[i] = 't'; i++;
+                break;
+        case 21:
+                Screen_Put('y'); buffstr[i] = 'y'; i++;
+                break;
+        case 22:
+                Screen_Put('u'); buffstr[i] = 'u'; i++;
+                break;
+        case 23:
+                Screen_Put('i'); buffstr[i] = 'i'; i++;
+                break;
+        case 24:
+                Screen_Put('o'); buffstr[i] = 'o'; i++;
+                break;
+        case 25:
+                Screen_Put('p'); buffstr[i] = 'p'; i++;
+                break;
+        case 26:
+                Screen_Put('['); buffstr[i] = '['; i++;
+                break;
+        case 27:
+                Screen_Put(']'); buffstr[i] = ']'; i++;
+                break;
+        case 28:
+                Screen_Put('\n'); buffstr[i] = '\n'; i++;
+                if (newlineend == true) {reading = false;}
+                break;
+        case 30:
+                Screen_Put('a'); buffstr[i] = 'a'; i++;
+                break;
+        case 31:
+                Screen_Put('s'); buffstr[i] = 's'; i++;
+                break;
+        case 32:
+                Screen_Put('d'); buffstr[i] = 'd'; i++;
+                break;
+        case 33:
+                Screen_Put('f'); buffstr[i] = 'f'; i++;
+                break;
+        case 34:
+                Screen_Put('g'); buffstr[i] = 'g'; i++;
+                break;
+        case 35:
+                Screen_Put('h'); buffstr[i] = 'h'; i++;
+                break;
+        case 36:
+                Screen_Put('j'); buffstr[i] = 'j'; i++;
+                break;
+        case 37:
+                Screen_Put('k'); buffstr[i] = 'k'; i++;
+                break;
+        case 38:
+                Screen_Put('l'); buffstr[i] = 'l'; i++;
+                break;
+        case 39:
+                Screen_Put(';'); buffstr[i] = ';'; i++;
+                break;
+        case 40:
+                Screen_Put('\''); buffstr[i] = '\''; i++;
+                break;
+        case 41:
+                Screen_Put('`'); buffstr[i] = '`'; i++;
+                break;
+        case 44:
+                Screen_Put('z'); buffstr[i] = 'z'; i++;
+                break;
+        case 45:
+                Screen_Put('x'); buffstr[i] = 'x'; i++;
+                break;
+        case 46:
+                Screen_Put('c'); buffstr[i] = 'c'; i++;
+                break;
+        case 47:
+                Screen_Put('v'); buffstr[i] = 'v'; i++;
+                break;                
+        case 48:
+                Screen_Put('b'); buffstr[i] = 'b'; i++;
+                break;               
+        case 49:
+                Screen_Put('n'); buffstr[i] = 'n'; i++;
+                break;                
+        case 50:
+                Screen_Put('m'); buffstr[i] = 'm'; i++;
+                break;               
+        case 51:
+                Screen_Put(','); buffstr[i] = ','; i++;
+                break;                
+        case 52:
+                Screen_Put('.'); buffstr[i] = '.'; i++;
+                break;            
+        case 53:
+                Screen_Put('/'); buffstr[i] = '/'; i++;
+                break;            
+        case 54:
+                Screen_Put('*'); buffstr[i] = '*'; i++;
+                break;            
+        case 55:
+                Screen_Put('/'); buffstr[i] = '/'; i++;
+                break;                    
+        case 57:
+                Screen_Put(' '); buffstr[i] = ' '; i++;
+                break;
+        case 121:
+                Screen_Put('+'); buffstr[i] = '+'; i++;
                 break;
             }
         }
     }
+    buffstr[i] = 0;
+    return buffstr;
 }
 
-s8int MapKeycodes(u8int base)
+s8int __MapKeycodes__(u8int base)
 {
-    switch(base)
-            { 
+switch(base)
+        { 
         case 1:
-                return (char)27;
+                return '\0';
                 break;
         case 2:
                 return '1';
@@ -200,7 +354,7 @@ s8int MapKeycodes(u8int base)
                 return '/';
                 break;            
         case 54:
-                return '.';
+                return '*';
                 break;            
         case 55:
                 return '/';

@@ -2,6 +2,6 @@
 #include "../sys/IO.h"
 #include "../screen/Screen.h"
 
-s8int MapKeycodes(u8int base);
-s8int ReadKey(state_t hide);
-string ReadStr();
+s8int __MapKeycodes__(u8int base);
+char ReadKey(bool showkey);
+string ReadStr(bool newlineend);
