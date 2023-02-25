@@ -1,11 +1,12 @@
-#include "screen/Screen.h"
-#include "keyboard/Keyboard.h"
+#include "drivers/vga/vga.h"
+#include "drivers/idt/idt.h"
+#include "drivers/keyboard/keyboard.h"
 
-void Kernel(void)
+void kernel(void)
 {
-    VGA_INIT
-    Screen_Write("Hello, world\n");
-    Move_Cursor(3,5);
-    Screen_Put('\t');
-    ReadStr(false);
+    __VGA_INIT__();
+    vgaWriteString("Hello Kernel\n");
+    
+    idtInit();
+    keyboardInit();
 }
