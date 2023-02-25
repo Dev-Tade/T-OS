@@ -17,7 +17,7 @@ struct _IDT_ENTRY_ {
     u8int zero;
     u8int typeAttribute;
     
-    u16int offsetHigherBits
+    u16int offsetHigherBits;
 };
 
 void idtLoad(unsigned long *ptr);

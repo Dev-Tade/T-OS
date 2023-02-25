@@ -7,17 +7,23 @@
 
 #define KEYBOARD_DATA_PORT 0x60
 #define KEYBOARD_STATUS_PORT 0x64
+
 #define KEYBOARD_ENTER_KEYCODE 0x1C
+#define KEYBOARD_BACKSPACE_KEYCODE 0x0E
 #define KEYBOARD_ESCAPE_KEYCODE 0x01
+
+#define KEYBOARD_ARROW_UP_KEYCODE    0x48
+#define KEYBOARD_ARROW_DOWN_KEYCODE  0x50
+#define KEYBOARD_ARROW_LEFT_KEYCODE  0x4B
+#define KEYBOARD_ARROW_RIGHT_KEYCODE 0x4D
 
 extern void keyboardHandler(void);
 
 void keyboardMain(void);
-void keyboardInit(void);
+void keyboardEnable(void);
 void keuyboardDisable(void);
 
-static unsigned char kbd_map[128] =
-{
+static u8int keybardMap[128] = {
     0,  27, '1', '2', '3', '4', '5', '6', '7', '8',	/* 9 */
   '9', '0', '-', '=', '\b',	/* Backspace */
   '\t',			/* Tab */
@@ -54,6 +60,16 @@ static unsigned char kbd_map[128] =
     0,	/* F11 Key */
     0,	/* F12 Key */
     0,	/* All other keys are undefined */
+};
+
+static u8int specialKeysMap[28] = {
+  0x01, 0x1C, 0x0E, // ESC, ENTER, BACKSPACE
+  0x3B, 0x3C, 0x3D, 0x3E, 0x3F, 0x40, // F1 - F6
+  0x41, 0x42, 0x43, 0x44, 0x57, 0x58, // F7 - F12
+  0x4B, 0x48, 0x4D, 0x50, // LEFT, UP, RIGHT, DOWN Arrows
+  0x52, 0x53, 0x47, 0x4F, // INSERT, DELETE, HOME, END
+  0x49, 0x51, 0x37, // PG UP, PG DOWN, PRINT SCREEN
+  0x45, 0x46, // PAUSE/BREAK / NUM-LOCK, SCROLL-LOCK
 };
 
 #endif

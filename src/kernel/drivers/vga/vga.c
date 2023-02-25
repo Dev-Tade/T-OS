@@ -30,7 +30,11 @@ void vgaPutc(char c) {
     if (c == '\n')
         vgaMoveCursor(0, __vgaY + 1);
     else if (c == '\t') {
-        vgaPutc(' '); vgaPutc(' '); 
+        vgaPutc(' '); vgaPutc(' ');
+    } else if (c == '\b') {
+        vgaMoveCursor(__vgaX-1, __vgaY);
+        vgaPutc(' ');
+        vgaMoveCursor(__vgaX-1, __vgaY);
     } else {
         __vgaMem[__vgaIdx] = c | (unsigned)WHITE << 8;
         __vgaIdx++;
