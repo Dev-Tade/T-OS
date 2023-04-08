@@ -6,11 +6,11 @@ AS = nasm
 EMU = qemu-system-i386
 EMUFLAGS = -device isa-debug-exit,iobase=0xf4,iosize=0x04 -fda
 
-C_SOURCES = src/kernel/kernel.c src/kernel/drivers/vga.c
-
 all: TOS.img
 
-kernel.bin: kernel_entry.o kernel.o vga.o
+O_FILES = kernel_entry.o kernel.o ll.o vga.o
+
+kernel.bin: ${O_FILES}
 	$(LD) -m elf_i386 -o $@ -T src/Link.ld $^ --oformat binary
 
 kernel_entry.o: src/kernel/kernel_entry.asm
@@ -25,6 +25,9 @@ boot.bin: src/boot/*.asm
 vga.o: src/kernel/drivers/vga.c
 	$(CC) $(CF) -ffreestanding -c $< -o $@
 
+ll.o: src/kernel/ll.c
+	$(CC) $(CF) -ffreestanding -c $< -o $@
+
 TOS.img: boot.bin kernel.bin
 	dd if=/dev/zero of=$@ bs=1024 count=1440
 	dd if=boot.bin of=$@ conv=notrunc
@@ -33,6 +36,7 @@ TOS.img: boot.bin kernel.bin
 clean:
 	rm -rf *.bin
 	rm -rf *.o
+	rm TOS.img
 
 run: all TOS.img
 	$(EMU) $(EMUFLAGS) TOS.img

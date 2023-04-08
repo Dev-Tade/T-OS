@@ -19,7 +19,8 @@ diskLoad:
 
 diskError:
     mov bx, DISK_ERROR_MSG
-    call printStrRM
+    call printStr16
+    call printLn16
     jmp $
 
 DISK_ERROR_MSG: db "Disk read error! ",0
