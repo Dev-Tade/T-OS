@@ -1,9 +1,13 @@
-OUTPUT_FORMAT(elf32-i386)
-ENTRY(start)
-SECTIONS
-{
-   . = 0x100000;
-   .text : { *(.text) }
-   .data : { *(.data) }
-   .bss  : { *(.bss)  }
+ENTRY(_start)
+
+SECTIONS {
+    /* bootloader code */
+    . = 0x7c00;
+    .text : { *(.text.bootloader) }
+
+    /* kernel code */
+    . = 0x1000;
+    .text : { *(.text.kernel) }
+    .data : { *(.data.kernel) }
+    .bss : { *(.bss.kernel) }
 }

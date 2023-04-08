@@ -1,30 +1,31 @@
 # T-OS
+
 **An Open Source Operating System:** <br />
-*To build you will need Linux or WSL with the next packages:* <br />
-***-NASM*** <br />
-***-QEMU*** <br />
-***-GCC*** <br />
-***-LD*** <br />
-***-GRUB*** <br />
-*Once the packages are installed run `Build.sh`* <br />
-**Now run qemu: `qemu-system-i386 -kernel bin/Kernel.bin`**
 
-## Project Structure:
-```path
-+ T-OS
-|- bin (Last Generated Kernel)
-|- src (Directory containing all the src)
-|- Build.sh (Build Script)
-|- README.md (This document)
-|- LICENSE (IGNORE)
-```
-```
-+ src
-|- boot (Contains Bootloader src)
-|- Kernel (All Kernel source)
-|- Link.ld (Linker)
+### PREREQUISITES
+
+0. Linux | WSL
+1. MAKE
+2. NASM
+3. GCC
+4. LD
+5. MAKE
+
+### BUILDING
+
+```console
+$ make run
 ```
 
-## Origins of T-OS
-**T-OS is a side project to get a Bootloader in Assembly and a Kernel written in C** <br />
-**T-OS originally was called c-OS (Custom - OS)**
+### MOTIVATION
+
+**T-OS was a side project with these objectives:**
+
+1. Bootloader (Assembly)
+2. Kernel (C)
+
+**T-OS originally was called c-OS (Custom - OS)**<br/>
+
+**T-OS is heavily inspired by Linux, BSD, UNIX**<br/>
+
+## MORE INFO SOON
